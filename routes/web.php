@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\TestController;
-
+use App\Http\Controllers\UserLocationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,8 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('user-location', [UserLocationController::class,'index']);
+
+
 Route::get('orders', [TestController::class, 'get_orders']);
 Route::get('phone_detail', [TestController::class, 'get_phone_detail']);
 Route::get('add_phone', [TestController::class, 'add_phone']);
-Route::get('orders', [TestController::class, 'get_orders']);
+Route::get('add_order', [TestController::class, 'add_order']);
 Route::get('orders', [TestController::class, 'get_orders']);

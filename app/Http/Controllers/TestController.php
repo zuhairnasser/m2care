@@ -38,4 +38,8 @@ class TestController extends Controller
     {
         return view("phone.phone_detail");
     }
+    public function add_order(){
+        return view("orders.create");
+
+    }
 }

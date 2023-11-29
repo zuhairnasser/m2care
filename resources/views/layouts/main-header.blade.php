@@ -12,7 +12,7 @@
 
 
         </div>
-        <a href="">
+        <a href="/add_order">
             <div class="btn btn-success">
               طلب جديد
             </div>
