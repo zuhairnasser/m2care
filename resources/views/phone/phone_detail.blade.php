@@ -71,9 +71,11 @@
                 </tbody>
             </table>
             <div class="card-footer">
-                <div class="btn btn-md btn-primary">
-                    طلب صيانة
-                </div>
+              <a href="/add_order">
+              <div class="btn btn-md btn-primary">
+                طلب صيانة
+            </div>
+        </a>
             </div>
         </div>
     </div>

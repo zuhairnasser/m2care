@@ -23,7 +23,7 @@
                     <option value="1"> لينوفو</option>
                     <option value="2"> ايفون</option>
                     <option value="2"> ساسمسونج</option>
-                  
+
 
                 </select>
             </div>
@@ -65,14 +65,12 @@
             <br>
             <div class="parsley-input col-md-12 mg-t-20 mg-md-t-0" id="lnWrapper">
                 <label> حدد مكان الالتقاط</label>
-                <input class="form-control fc-datepicker" name="B_date" placeholder="YYYY-MM-DD" type="text"
-                    value="{{ date('Y-m-d') }}" required>
+                <input class="form-control fc-datepicker" name="B_date" placeholder="" type="text" required>
             </div>
             <br>
             <div class="parsley-input col-md-12 mg-t-20 mg-md-t-0" id="lnWrapper">
                 <label> العنوان</label>
-                <input class="form-control fc-datepicker" name="B_date" placeholder="YYYY-MM-DD" type="text"
-                    value="{{ date('Y-m-d') }}" required>
+                <input class="form-control fc-datepicker" name="B_date" placeholder="" type="text" required>
             </div>
             <br>
             <div class="parsley-input col-md-12 mg-t-20 mg-md-t-0" id="lnWrapper">
