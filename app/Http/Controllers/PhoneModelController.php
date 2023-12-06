@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Color;
+use App\Models\Factory;
+use App\Models\Memory;
+use App\Models\Phone_storage;
+use App\Models\Phone;
 class PhoneModelController extends Controller
 {
     /**
@@ -13,7 +17,12 @@ class PhoneModelController extends Controller
      */
     public function index()
     {
-        //
+        // $factories = Factory::get();
+        // $colors = Color::get();
+        // $memories = Memory::get();
+        // $phone_storages = Phone_storage::get();
+        // $phones = Phone::all();
+        //      return view("phone.phone_detail",compact("factories","colors","memories","phone_storages","phones"));
     }
 
     /**

@@ -2,6 +2,7 @@
 <div class="main-header sticky side-header nav nav-item">
     <div class="container-fluid">
         <div class="main-header-left ">
+
             <div class="responsive-logo">
 
             </div>
@@ -14,11 +15,11 @@
         </div>
         <a href="/add_order">
             <div class="btn btn-success">
-              طلب جديد
+                طلب جديد
             </div>
         </a>
         <div class="main-header-right">
-
+            
             <div class="nav nav-item  navbar-nav-right ml-auto">
                 <div class="nav-link" id="bs-example-navbar-collapse-1">
                     <form class="navbar-form" role="search">
