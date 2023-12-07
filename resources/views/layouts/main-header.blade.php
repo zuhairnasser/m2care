@@ -13,13 +13,13 @@
 
 
         </div>
-        <a href="/add_order">
+        <a href="/orders/create">
             <div class="btn btn-success">
                 طلب جديد
             </div>
         </a>
         <div class="main-header-right">
-            
+
             <div class="nav nav-item  navbar-nav-right ml-auto">
                 <div class="nav-link" id="bs-example-navbar-collapse-1">
                     <form class="navbar-form" role="search">
