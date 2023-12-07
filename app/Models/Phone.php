@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,6 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 class Phone extends Model
 {
 
+    protected $fillable = [
+        'factory_id',
+        'phone_model_id',
+        'color_id',
+        'phone_storage_id',
+    ];
     public function factory()
     {
         return $this->belongsTo(Factory::class);
@@ -15,7 +22,7 @@ class Phone extends Model
 
 
 
-   public function phone_type()
+    public function phone_type()
     {
         return $this->belongsTo(Phone_type::class);
     }
@@ -71,31 +78,28 @@ class Phone extends Model
 
 
 
-        protected $appends = [
+    protected $appends = [
         'warranty_remaining_days',
     ];
 
 
 
-      public function getWarrantyRemainingDaysAttribute()
+    public function getWarrantyRemainingDaysAttribute()
     {
 
-        $now=Carbon::now();
+        $now = Carbon::now();
 
-$formatted_dt2 = Carbon::parse($this->warranty_expires_at);
+        $formatted_dt2 = Carbon::parse($this->warranty_expires_at);
 
-if($formatted_dt2 < $now){
-    return 0;
-}
+        if ($formatted_dt2 < $now) {
+            return 0;
+        }
 
 
 
-$date_diff=$now->diffInDays($formatted_dt2);
+        $date_diff = $now->diffInDays($formatted_dt2);
 
 
         return $date_diff;
     }
-
-
-
 }
