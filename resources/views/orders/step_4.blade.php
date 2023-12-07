@@ -45,18 +45,32 @@
                             <label> تفاصيل مكان وتاريخ الالتقاط</label>
                             <div class="card-body">
                                 مكان الالتقاط
-                                {{ $all_data['catch_up'] }}
+                                @if (isset($all_data['catch_up']))
+                                    {{ $all_data['catch_up'] }}
+                                @else
+                                    لا يوجد
+                                @endif
                                 <br>
                                 العنوان بالتفصيل
-                                {{ $all_data['address'] }}
+                                @if (isset($all_data['address']))
+                                    {{ $all_data['address'] }}
+                                @else
+                                    لا يوجد
+                                @endif
                                 <br>
                                 اليوم
-                                {{ $all_data['date_to_catch_up'] }}
+                                @if (isset($all_data['date_catch_up']))
+                                    {{ $all_data['date_catch_up'] }}
+                                @else
+                                    لا يوجد
+                                @endif
                                 <br>
                                 الزمن
-                                {{ $all_data['time'] }}
-
-
+                                @if (isset($all_data['time']))
+                                    {{ $all_data['time'] }}
+                                @else
+                                    لا يوجد
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -67,10 +81,14 @@
                             <label> الملاحظات والملحقات</label>
                             <div class="card-body">
                                 الملاحظات
+                                @if (isset($all_data['note']))
                                 {{ $all_data['note'] }}
+                            @else
+                                لا يوجد
+                            @endif
                                 <br>
                                 الملحقات
-                                {{ $all_data['address'] }}
+                                {{-- {{ $all_data['note'] }} --}}
                                 <br>
 
 
