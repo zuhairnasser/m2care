@@ -33,7 +33,7 @@
                 </div>
                 <br>
                 <div class="col">
-                    <button class="btn btn-md btn-success">بحث</button>
+                    <button action="submit" class="btn btn-md btn-success">بحث</button>
 
                 </div>
             </div>

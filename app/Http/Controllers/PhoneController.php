@@ -12,16 +12,10 @@ use App\Models\Phone_model;
 use App\Models\Screen;
 use App\Models\Sim_card;
 use App\Models\Support;
-use App\Models\Storage;
 use Illuminate\Support\Facades\Auth;
 
 class PhoneController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $factories = Factory::get();
@@ -40,11 +34,9 @@ class PhoneController extends Controller
     {
         return view("phone.create");
     }
-
     public function create()
     {
     }
-
     public function add_new_phone(Request $request)
     {
         if ($request->serial_number == 123456789) {
@@ -60,8 +52,8 @@ class PhoneController extends Controller
                     'sim_card',
                     'support'
                 )->first();
-             
-            return view("phone.add_phone", compact("phone"));
+
+            return view("phone.store_phone", compact("phone"));
         } else {
             $factories = Factory::all();
             $models = Phone_model::all();
@@ -78,7 +70,9 @@ class PhoneController extends Controller
             }
 
             $phone = Phone::where('serial_number', $request->serial_number)->first();
-            return view("phone.add_phone", compact(
+
+
+            return view("phone.store_phone", compact(
                 "phone",
                 "screens",
                 "models",
@@ -93,25 +87,19 @@ class PhoneController extends Controller
             ));
         }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
+    {
+    }
+    public function store_phone(Request $request)
     {
         $this->validate($request, [
             'factory' => 'required|not_in:0',
             'model' => 'required|not_in:0',
             'color' => 'required|not_in:0',
-            'memory' => 'required|not_in:0',
             'stoarge' => 'required|not_in:0',
 
         ]);
         $phone = new Phone();
-        $phone->serial_number = 55545454;
         $phone->user_id = Auth::id();
         $phone->factory_id = $request->factory;
         $phone->phone_model_id = $request->model;
@@ -125,53 +113,27 @@ class PhoneController extends Controller
             $phone->screen_id = $request->screen;
         }
         $phone->save();
-        session()->flash('Add_college');
-        return redirect('/phones');
+        session()->flash('add_phone');
+        return redirect('/');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $phone = Phone::findOrFail($id);
         return view("phone.show", compact("phone"));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+
     }
 }

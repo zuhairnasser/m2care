@@ -29,6 +29,7 @@ Route::post('step_three', [OrderController::class, 'step_three'])->middleware('a
 Route::post('step_three', [OrderController::class, 'step_three'])->middleware('auth')->name("step_three");
 Route::resource('phones', PhoneController::class);
 Route::post('phone-create', [PhoneController::class, 'add_new_phone'])->name("add_new_phone");
+Route::post('store_phone', [PhoneController::class, 'store_phone'])->name('store_phone');
 Route::get('add_phone', [PhoneController::class, "create_serial_number"])->name("add_phone");
 Route::post('search', [PhoneController::class, 'search'])->name("search_serial");
 Route::get('about', [ConfigController::class, 'about']);

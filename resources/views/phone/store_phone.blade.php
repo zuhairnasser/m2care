@@ -24,8 +24,8 @@
     </div>
 @endsection
 @section('content')
-    <form method="POST" action="{{ route('phones.store') }}">
-        @csrf
+<form method="POST" action="{{ route('store_phone') }}">
+   @csrf
         <div class="card">
             <div class="card-header">
                 <h3> اضافة جوال جديد</h3>
@@ -56,9 +56,9 @@
                     <label>الشركة المصنعة</label>
                     <select class="form-control" id ="factory" name="factory">
                         @if (isset($phone))
-                            <option value="{{ $phone->factory->id }}" selected disabled>{{ $phone->factory->name }}</option>
+                            <option value="{{ $phone->factory->id }}" selected >{{ $phone->factory->name }}</option>
                         @else
-                            <option value="" selected disabled>إختر نوع الجهاز</option>
+                            <option value="" selected >إختر نوع الجهاز</option>
                             @foreach ($factories as $factory)
                                 <option value={{ $factory->id }}>{{ $factory->name }}</option>
                             @endforeach
@@ -74,7 +74,7 @@
 
                         <label> الموديل</label>
                         <select name="model" class="form-control">
-                            <option value="{{ $phone->phone_model->id }}" selected disabled>{{ $phone->phone_model->name }}
+                            <option value="{{ $phone->phone_model->id }}" selected >{{ $phone->phone_model->name }}
                             </option>
 
                         </select>
@@ -95,7 +95,7 @@
                     <label> الشاشة (إختياري)</label>
                     <select class="form-control" name="screen">
                         @if (isset($phone))
-                            <option value="{{ $phone->screen->id }}" selected disabled>{{ $phone->screen->name }}</option>
+                            <option value="{{ $phone->screen->id }}" selected >{{ $phone->screen->name }}</option>
                         @else
                             <option value="" selected disabled>إختر نوع الجهاز</option>
                             @foreach ($screens as $screen)
@@ -110,7 +110,7 @@
                     <label> الشريحة (إختياري)</label>
                     <select class="form-control" name="sim">
                         @if (isset($phone))
-                            <option value="{{ $phone->sim_card->id }}" selected disabled>{{ $phone->sim_card->name }}
+                            <option value="{{ $phone->sim_card->id }}" selected >{{ $phone->sim_card->name }}
                             </option>
                         @else
                             <option value="" selected disabled>إختر نوع الجهاز</option>
@@ -125,7 +125,7 @@
                     <label>الدعم</label>
                     <select class="form-control" name="support">
                         @if (isset($phone))
-                            <option value="{{ $phone->support->id }}" selected disabled>{{ $phone->support->name }}
+                            <option value="{{ $phone->support->id }}" selected >{{ $phone->support->name }}
                             </option>
                         @else
                             <option value="" selected disabled>إختر نوع الجهاز</option>
@@ -140,7 +140,7 @@
                     <label>اللون</label>
                     <select class="form-control" name="color">
                         @if (isset($phone))
-                            <option value="{{ $phone->color->id }}" selected disabled>{{ $phone->color->name }}</option>
+                            <option value="{{ $phone->color->id }}" selected >{{ $phone->color->name }}</option>
                         @else
                             <option value="" selected disabled>إختر نوع الجهاز</option>
                             @foreach ($colors as $color)
@@ -154,7 +154,7 @@
                     <label> السعة التخزينية (إختياري)</label>
                     <select class="form-control" name="stoarge">
                         @if (isset($phone))
-                            <option value="{{ $phone->phone_storage->id }}" selected disabled>
+                            <option value="{{ $phone->phone_storage->id }}" selected >
                                 {{ $phone->phone_storage->name }}</option>
                         @else
                             <option value="" selected disabled>إختر نوع الجهاز</option>
@@ -180,11 +180,15 @@
                     </select>
                 </div>
                 <br>
+                <div class="col">
+                    <button class="btn btn-md btn-success">بحث</button>
+
+                </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-primary btn-lg" action ="sumbit">
+                {{-- <button class="btn btn-primary btn-lg" type="submit">
                     حفظ
-                </button>
+                </button> --}}
             </div>
         </div>
     </form>
@@ -193,7 +197,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js">
     </script>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             $('#factory').on('change', function() {
                 var factoryId = this.value;
@@ -224,7 +228,7 @@
                 });
             });
         });
-    </script>
+    </script> --}}
     <script>
         $('#sandbox-container input').datepicker({});
     </script>

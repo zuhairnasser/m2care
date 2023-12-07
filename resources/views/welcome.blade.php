@@ -16,7 +16,18 @@
 @endsection
 @section('content')
     <!-- row -->
-    <a href="/phones/create">
+    @if (session()->has('add_phone'))
+        <script>
+            window.onload = function() {
+                notif({
+                    msg: "تم الأضافة بنجاح",
+                    type: "success"
+                })
+            }
+        </script>
+    @endif
+
+    <a href="{{ route('add_phone') }}">
         <div class="btn btn-md btn-success">
             إضافة جوال
 
@@ -156,7 +167,7 @@
                         <a href="{{ route('phones.show', $phone->id) }}" class="btn btn-sm btn-success" title="عرض"><i
                                 class="las la-eye"></i>
                             عرض التفاصيل
-                            </a>
+                        </a>
 
 
 
