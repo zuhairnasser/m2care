@@ -23,7 +23,7 @@
                 @foreach ($collection as $input)
                     <div class="parsley-input col-lg-12">
                         <label>{{ $input->name }}</label>
-                        <select class="form-control" name="{{ $input->en_name }}">
+                        <select required class="form-control" name="{{ $input->en_name }}">
                             <option value="" selected disabled>إختر نوع العطل</option>
                             @foreach ($input->malfunction_sub_categories as $malfunction)
                                 <option value={{ $malfunction->id }}>{{ $malfunction->name }}</option>
