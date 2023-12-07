@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddPhoneRequest;
 use Illuminate\Http\Request;
 use App\Models\Color;
 use App\Models\Factory;
@@ -39,7 +40,7 @@ class PhoneController extends Controller
     }
     public function add_new_phone(Request $request)
     {
-        if ($request->serial_number == 123456789) {
+        if ($request->serial_number == 12345789) {
             $phone = Phone::where('id', 1701)
                 ->with(
                     'factory',
@@ -90,15 +91,8 @@ class PhoneController extends Controller
     public function store(Request $request)
     {
     }
-    public function store_phone(Request $request)
+    public function store_phone(AddPhoneRequest $request)
     {
-        $this->validate($request, [
-            'factory' => 'required|not_in:0',
-            'model' => 'required|not_in:0',
-            'color' => 'required|not_in:0',
-            'stoarge' => 'required|not_in:0',
-
-        ]);
         $phone = new Phone();
         $phone->user_id = Auth::id();
         $phone->factory_id = $request->factory;
@@ -134,6 +128,5 @@ class PhoneController extends Controller
     }
     public function destroy($id)
     {
-
     }
 }
