@@ -44,23 +44,33 @@ class OrderController extends Controller
     }
     public function step_one(Request $request)
     {
+        $request->validate([
+            'factory' => 'required'
+        ]);
         $factory = $request->factory;
         $accessories = Accessory::all();
         $collection = collect([]);
-        foreach ($request->malfunctions as  $malfunction) {
-            $data = Malfunction_category::where('id', $malfunction)->with('malfunction_sub_categories')->first();
-            $data1[$data->name] = $data;
-            $collection->push($data);
+        if ($request->malfunctions != null) {
+            foreach ($request->malfunctions as  $malfunction) {
+                $data = Malfunction_category::where('id', $malfunction)->with('malfunction_sub_categories')->first();
+                $data1[$data->name] = $data;
+                $collection->push($data);
+            }
         }
+
         return view("orders.step_2", compact('collection', 'accessories', 'factory'));
     }
     public function step_two(Request $request)
     {
-        foreach ($request->input() as $key => $value) {
-            $data[$key] = $value;
+        if ($request->input() != null) {
+            foreach ($request->input() as $key => $value) {
+                $data[$key] = $value;
+            }
         }
         return view("orders.step_3", compact("data"));
     }
+
+
     public function step_three(Request $request)
     {
         $all_data =  $request->input();
@@ -81,7 +91,7 @@ class OrderController extends Controller
             $result = Malfunction_sub_category::where('id', $value)->with('malfunction_category')->get();
             $collection->push($result);
         }
-    
+
         return view("orders.step_4", compact("collection", "all_data"));
     }
     public function update(Request $request, $id)
