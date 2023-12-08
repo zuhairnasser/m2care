@@ -15,8 +15,8 @@
     <!-- breadcrumb -->
 @endsection
 @section('content')
-    @foreach ($orders as $order)
-        @if (isset($order))
+    @if ($orders != null && $orders->count() > 0)
+        @foreach ($orders as $order)
             <div class="card">
                 <div class="card-body">
                     <div>
@@ -79,7 +79,7 @@
                                                 @if (isset($order->order_details))
                                                     <td>
                                                         @foreach ($order->order_details as $msc)
-                                                            {{$msc->malfunction_sub_category->name}} -
+                                                            {{ $msc->malfunction_sub_category->name }} -
                                                         @endforeach
                                                     </td>
                                                 @else
@@ -94,8 +94,10 @@
                     </div>
                 </div>
             </div>
-        @endif
-    @endforeach
+        @endforeach
+    @else
+        @include('layouts.no_data')
+    @endif
 @endsection
 @section('js')
 @endsection

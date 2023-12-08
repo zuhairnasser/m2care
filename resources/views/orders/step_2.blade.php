@@ -40,6 +40,7 @@
                 <div class="parsley-input col-lg-12">
                     <label class="form-label">ملحقات</label>
                     <br>
+                    @if (isset($accessories))
                     <div class="row">
                         @foreach ($accessories as $accessory)
                             <div class="col-lg mg-5"> <label class="ckbox"><input type="checkbox"><span>
@@ -48,6 +49,9 @@
                             </div>
                         @endforeach
                     </div>
+                    @else
+                     
+                    @endif
                 </div>
             </div>
             <div class="card-footer">
