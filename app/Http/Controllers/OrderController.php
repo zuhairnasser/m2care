@@ -62,12 +62,16 @@ class OrderController extends Controller
     }
     public function step_two(Request $request)
     {
-        if ($request->input() != null) {
-            foreach ($request->input() as $key => $value) {
-                $data[$key] = $value;
+        try {
+            if ($request->input() != null) {
+                foreach ($request->input() as $key => $value) {
+                    $data[$key] = $value;
+                }
             }
+            return view("orders.step_3", compact("data"));
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-        return view("orders.step_3", compact("data"));
     }
 
 
